@@ -5,11 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Dinner Inspirationr</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></head>
+    <title>Dinner Inspiration</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+   
+</head>
 
 <body>
-    <div id="buttons">
+ <div id="buttons">
         <button type="button" class="btn btn-primary btn-lg" data-person="chicken recipes">
             Chicken
         </button>
@@ -72,15 +74,14 @@
 
             <!-- **************************************** -->
 
-
-            <!-- STEP THREE: open this file in the browser and click on your buttons. If they don't work, then fix your buttons -->
-
-            <!-- STEP FOUR: go over the JavaScript with your partners, and explain the lines of code to each other. -->
-
     </div>
     <h1 class = "display-1 text-center">Deciding What to Eat?</h1>
-    <div class="md-form active-pink active-pink-2 mb-3 mt-0">
-        <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+    <div class="input-group mb-3">
+        <input type="text" id=userInput class="form-control" placeholder="Search any ingridient or flavor. Be inspired!" aria-label="Search any ingridient or flavor..." aria-describedby="search-button">
+        <div class="input-group-append">
+            <button type="button" class="btn btn-outline-secondary" data-person="tasty recipes">
+                Search
+        </div>
       </div>
     <div id="gifs-appear-here">
     </div>
@@ -115,6 +116,9 @@
                     }
                 });
         });
+        
+       
+
     </script>
 </body>
 
