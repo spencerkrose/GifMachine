@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dinner Inspirationr</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></head>
+
+<body>
+    <div id="buttons">
+        <button type="button" class="btn btn-primary btn-lg" data-person="chicken recipes">
+            Chicken
+        </button>
+        <button type="button" class="btn btn-primary btn-lg" data-person="beef recipes">
+            Beef
+        </button>
+        <button type="button" class="btn btn-primary btn-lg" data-person="pork recipes">
+            Pork
+        </button>
+        <button type="button" class="btn btn-primary btn-lg" data-person="fish recipes">
+            Fish
+        </button>
+        <button type="button" class="btn btn-primary btn-lg" data-person="vegetarian recipes">
+            Vegetarian
+            <button type="button" class="btn btn-info btn-lg" data-person="breakfast recipes">
+                Breakfast
+            </button>
+            <button type="button" class="btn btn-info btn-lg" data-person="brunch recipes">
+                Brunch
+            </button>
+            <button type="button" class="btn btn-info btn-lg" data-person="lunch recipes">
+                Lunch
+            </button>
+            <button type="button" class="btn btn-info btn-lg" data-person="dinner recipes">
+                Dinner
+            </button>
+            <button type="button" class="btn btn-info btn-lg" data-person="dessert recipes">
+                Dessert
+            </button>
+            <button type="button" class="btn btn-warning btn-lg" data-person="hamburger recipes">
+                Hamburger
+            </button>
+            <button type="button" class="btn btn-warning btn-lg" data-person="Pasta recipes">
+                Pasta
+            </button>
+            <button type="button" class="btn btn-warning btn-lg" data-person="Salad recipes">
+                Salad
+            </button>
+            <button type="button" class="btn btn-warning btn-lg" data-person="Sandwich recipes">
+                Sandwich
+            </button>
+            <button type="button" class="btn btn-warning btn-lg" data-person="Soup recipes">
+                Soup
+            </button>
+            <button type="button" class="btn btn-danger btn-lg" data-person="Tacos recipes">
+                Tacos
+            </button>
+            <button type="button" class="btn btn-danger btn-lg" data-person="Pizza recipes">
+                Pizza
+            </button>
+            <button type="button" class="btn btn-danger btn-lg" data-person="Fried Chicken recipes">
+                Fried Chicken
+            </button>
+            <button type="button" class="btn btn-danger btn-lg" data-person="Falafel recipes">
+                Falafel
+            </button>
+            <button type="button" class="btn btn-danger btn-lg" data-person="Fried Rice recipes">
+                Fried Rice
+            </button>
+
+            <!-- **************************************** -->
+
+
+            <!-- STEP THREE: open this file in the browser and click on your buttons. If they don't work, then fix your buttons -->
+
+            <!-- STEP FOUR: go over the JavaScript with your partners, and explain the lines of code to each other. -->
+
+    </div>
+    <h1 class = "display-1 text-center">Deciding What to Eat?</h1>
+    <div class="md-form active-pink active-pink-2 mb-3 mt-0">
+        <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+      </div>
+    <div id="gifs-appear-here">
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $("button").on("click", function () {
+            var person = $(this).attr("data-person");
+            var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
+                person + "&api_key=30yH8xwkbL8TAGWORes8nugstw6XAoZq&limit=10&rating=pg";
+
+            $.ajax({
+                url: queryURL,
+                method: "GET"
+            })
+                .then(function (response) {
+                    var results = response.data;
+
+                    for (var i = 0; i < results.length; i++) {
+                        var gifDiv = $("<div>");
+
+                        var rating = results[i].rating;
+
+                        var p = $("<p>").text("Rating: " + rating);
+
+                        var personImage = $("<img>");
+                        personImage.attr("src", results[i].images.fixed_height.url)
+                        gifDiv.prepend(p);
+                        gifDiv.prepend(personImage);
+
+                        $("#gifs-appear-here").prepend(gifDiv);
+                    }
+                });
+        });
+    </script>
+</body>
+
+</html>
